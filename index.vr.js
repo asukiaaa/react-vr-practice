@@ -2,11 +2,12 @@ import React from 'react';
 import {
   AppRegistry,
   asset,
+  Image,
   Pano,
-  Text,
-  View,
   Scene,
   StyleSheet,
+  Text,
+  View,
   VrButton,
 } from 'react-vr';
 
@@ -37,7 +38,6 @@ export default class react_vr_practice extends React.Component {
         height: 1,
       }),
       textView: {
-        transform: [{translate: [0, 2, -6]}],
         flexDirection: 'row',
         layoutOrigin: [0.5, 0.5],
         alignSelf: 'center',
@@ -47,47 +47,67 @@ export default class react_vr_practice extends React.Component {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
-        <Scene style={{transform: [ {translate: [this.state.translateX, this.state.translateY, this.state.translateZ]} ]}} />
-        <View style={styles.textView}>
-          <VrButton onClick={()=>{ this.setState({translateX: this.state.translateX - 1}) }}>
-            <Text style={styles.button}>
-              Left
+        <Scene style={{
+          transform: [
+            {translate:
+             [this.state.translateX, this.state.translateY, this.state.translateZ]}
+          ]
+        }} />
+        <Image
+          style={{
+            width: 1,
+            height: 1,
+            transform: [
+              {translate: [-0.5, 0, -4]}
+            ]
+          }}
+          source={asset('halake_logo.png')} />
+        <View style={{
+          transform: [
+            {translate: [this.state.translateX, this.state.translateY + 2, this.state.translateZ - 6]}
+          ]
+        }}>
+          <View style={styles.textView}>
+            <VrButton onClick={()=>{ this.setState({translateX: this.state.translateX - 1}) }}>
+              <Text style={styles.button}>
+                Left
+              </Text>
+            </VrButton>
+            <VrButton onClick={()=>{ this.setState({translateX: this.state.translateX + 1}) }}>
+              <Text style={styles.button}>
+                Right
+              </Text>
+            </VrButton>
+          </View>
+          <View style={styles.textView}>
+            <VrButton onClick={()=>{ this.setState({translateZ: this.state.translateZ - 1}) }}>
+              <Text style={styles.button}>
+                Forward
+              </Text>
+            </VrButton>
+            <VrButton onClick={()=>{ this.setState({translateZ: this.state.translateZ + 1}) }}>
+              <Text style={styles.button}>
+                Back
+              </Text>
+            </VrButton>
+          </View>
+          <View style={styles.textView}>
+            <VrButton onClick={()=>{ this.setState({translateY: this.state.translateY + 1}) }}>
+              <Text style={styles.button}>
+                Up
+              </Text>
+            </VrButton>
+            <VrButton onClick={()=>{ this.setState({translateY: this.state.translateY - 1}) }}>
+              <Text style={styles.button}>
+                Down
+              </Text>
+            </VrButton>
+          </View>
+          <View style={styles.textView}>
+            <Text style={styles.text}>
+              Current: ({ this.state.translateX }, { this.state.translateZ }, { this.state.translateY })
             </Text>
-          </VrButton>
-          <VrButton onClick={()=>{ this.setState({translateX: this.state.translateX + 1}) }}>
-            <Text style={styles.button}>
-              Right
-            </Text>
-          </VrButton>
-        </View>
-        <View style={styles.textView}>
-          <VrButton onClick={()=>{ this.setState({translateZ: this.state.translateZ - 1}) }}>
-            <Text style={styles.button}>
-              Forward
-            </Text>
-          </VrButton>
-          <VrButton onClick={()=>{ this.setState({translateZ: this.state.translateZ + 1}) }}>
-            <Text style={styles.button}>
-              Back
-            </Text>
-          </VrButton>
-        </View>
-        <View style={styles.textView}>
-          <VrButton onClick={()=>{ this.setState({translateY: this.state.translateY + 1}) }}>
-            <Text style={styles.button}>
-              Up
-            </Text>
-          </VrButton>
-          <VrButton onClick={()=>{ this.setState({translateY: this.state.translateY - 1}) }}>
-            <Text style={styles.button}>
-              Down
-            </Text>
-          </VrButton>
-        </View>
-        <View style={styles.textView}>
-          <Text style={styles.text}>
-            Current: ({ this.state.translateX }, { this.state.translateZ }, { this.state.translateY })
-          </Text>
+          </View>
         </View>
       </View>
     );
