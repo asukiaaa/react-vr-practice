@@ -1,6 +1,6 @@
 # Blender v2.79 (sub 0) OBJ File: 'halake_qube.blend'
 # www.blender.org
-mtllib qube.mtl
+mtllib cube.mtl
 o Cube
 v -2.209723 -1.101915 -3.111828
 v -2.209723 -1.101915 -1.111828

@@ -1,9 +1,9 @@
 ```
 <Model
   source={{
-    obj: asset('halake_qube_object/qube.obj'),
+    obj: asset('halake_cube_object/cube.obj'),
   }}
-  texture={asset('halake_qube_object/HaLakeTexture.png')}
+  texture={asset('halake_cube_object/HaLakeTexture.png')}
   style={{
     transform: [
       {translate: [3, 0, -4]},
